@@ -4,15 +4,16 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('./app');
 var debug = require('debug')('searchservice:server');
 var http = require('http');
-var logger=require("../utilities/Logger")
+var logger=require("./utilities/Logger")
 
 
 /**
  * Get port from environment and store in Express.
  */
+var IP_ADDRESS = normalizePort(process.env.IP_ADDRESS || '127.0.0.1');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
@@ -27,7 +28,9 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port,IP_ADDRESS,()=>{
+  console.log("Server Started")
+});
 server.on('error', onError);
 server.on('listening', onListening);
 

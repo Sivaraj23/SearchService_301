@@ -1,4 +1,4 @@
-import mongoose from "@db/connection";
+import mongoose from "../db/connection";
 
 
 const Schema = mongoose.Schema;

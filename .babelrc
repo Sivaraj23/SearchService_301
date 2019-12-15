@@ -14,7 +14,6 @@
         "@models": "./models",
         "@utils": "./utilities",
         "@services": "./services",
-        "@db": "./db",
         "@config": "./config"
       }
     }]
