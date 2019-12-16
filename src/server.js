@@ -8,7 +8,11 @@ var app = require('./app');
 var debug = require('debug')('searchservice:server');
 var http = require('http');
 var logger=require("./utilities/Logger")
-
+try{
+var consul=require("./consul")
+}catch(err){
+  console.log(err)
+}
 
 /**
  * Get port from environment and store in Express.
