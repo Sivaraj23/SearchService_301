@@ -4,7 +4,7 @@ import logger from "../utilities/Logger"
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Search home' });
 });
 
 module.exports = router;

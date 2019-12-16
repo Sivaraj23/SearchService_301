@@ -21,16 +21,16 @@ host : '172.19.57.162' });
 
 
 consul.acl.bootstrap(function(err, result) {
-    console.log(err, result)
+    // console.log(err, result)
     // if (err) throw err;
   });
 
   
-  const PORT =  Number(process.env.PORT) ||3002;
+  const PORT =  +process.env.PORT ||3002;
   const IP_ADDRESS = process.env.IP_ADDRESS || 'localhost';
   
   consul.agent.members(function(err, result) {
-    console.log('members', err, result)
+    // console.log('members', err, result)
     if (err) throw err;
   });
 

@@ -9,7 +9,8 @@ var morgan = require('morgan');
 var indexRouter = require('./routes/index');
 var searchRouter = require('./routes/search/search')
 var app = express();
-
+var getOrderDetails=require('./utilities/consumer')
+getOrderDetails()
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -25,7 +26,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
-
 
 
 app.use('/', indexRouter);
