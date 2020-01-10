@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 require('dotenv').config()
 
 const MDB = `mongodb://${
-  process.env.MONGO_URL
+  process.env.MONGO_IP+":"+process.env.MONGO_PORT+"/restaurantDB"
 }`;
 mongoose
   .connect(MDB, {
