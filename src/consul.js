@@ -1,5 +1,7 @@
 //  var consul = require('consul')();
 var Bluebird = require('bluebird');
+require('dotenv').config()
+
 
 function fromCallback(fn) {
     return new Bluebird(function(resolve, reject) {
@@ -17,7 +19,7 @@ function fromCallback(fn) {
     });
   }
 var consul = require('consul')({ promisify: fromCallback,
-host : '172.19.57.162' });
+host : process.env.CONSUL_IP });
 
 
 consul.acl.bootstrap(function(err, result) {
@@ -30,7 +32,6 @@ consul.acl.bootstrap(function(err, result) {
   const IP_ADDRESS = process.env.IP_ADDRESS || 'localhost';
   
   consul.agent.members(function(err, result) {
-    // console.log('members', err, result)
     if (err) throw err;
   });
 
