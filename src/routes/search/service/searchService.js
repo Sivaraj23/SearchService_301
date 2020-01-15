@@ -15,29 +15,27 @@ const SearchService = {
         }
     },
     search: async (obj) => {
-
-
         // var res=new Restaurant({
-        //         "budgetPerPerson" : 100,
+        //         "budgetPerPerson" :200,
         //         "cuisine" : 
-        //             "madurai",
+        //             "hyderabad",
 
         //         "menuItems" : [ 
         //         ],
-        //         "name" : "MyRestaurantmadurai",
-        //         "email" : "myrestaurantyt@gmail.com",
-        //         "contactNumber" : "984311647",
-        //             "addressLine1" : "samayapuram",
-        //             "addressLine2" : "mariamman koil",
-        //             "city" : "madurai",
-        //             "state" : "madurai",
-        //             "pincode" : "621112",
-        //             "country" : "madurai",
-        //             "location" :{"type":"Point","coordinates":[120.0689274,26.0478223]}, 
-        //             "rating" : "6"
+        //         "name" : "MyRestauranthyderabad",
+        //         "email" : "myrestauranthyderabad@gmail.com",
+        //         "contactNumber" : "984311653",
+        //             "addressLine1" : "hyderabad",
+        //             "addressLine2" : "main road",
+        //             "city" : "hyderabad",
+        //             "state" : "Andhra",
+        //             "pincode" : "6200006",
+        //             "country" : "india",
+        //             "location" :{"type":"Point","coordinates":[17.4126274,78.2679613]}, 
+        //             "rating" : "5"
         // })
-        // res.save()
-
+        
+        // return await res.save();
         var query = {};
         if (obj.name){
             logger.info(NAME+"->Received Name field")
@@ -56,12 +54,12 @@ const SearchService = {
         if (obj.budget)
         {
             logger.info(NAME+"->Received budget field")
-            query.budget = await SearchService.getCaseInsensitiveQuery(obj.budget);  //budget
+            query.budgetPerPerson = obj.budget;  //budget
         }       
         if (obj.rating)
         {
             logger.info(NAME+"->Received rating field")
-            query.rating = await SearchService.getCaseInsensitiveQuery(obj.rating);  //rating
+            query.rating = obj.rating;  //rating
         }
         //longitude latitudes
         if (obj.lat) {
@@ -103,7 +101,6 @@ const SearchService = {
             throw new Error(err)
         }
         }
-        console.log(query)
         return await Restaurant.find(query);
     }, 
     getNotSupported : (req, res) => {
@@ -122,8 +119,5 @@ const SearchService = {
         res.statusCode = 403;
         res.end('GET operation not supported on this endpoint');
     }
-
-
 }
-
 export default SearchService;
