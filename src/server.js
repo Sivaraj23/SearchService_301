@@ -20,7 +20,7 @@ var consul=require("./consul")
 var IP_ADDRESS = normalizePort(process.env.IP_ADDRESS || '127.0.0.1');
 
 var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+// app.set('port', port);
 
 /**
  * Create HTTP server.
